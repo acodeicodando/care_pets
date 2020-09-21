@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'material_design_icons'
 gem 'friendly_id'
 gem 'faker'
+gem 'will_paginate'
