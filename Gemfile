@@ -31,6 +31,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  #Custom gems
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec', require: false
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'simplecov'
+  gem 'faker'
 end
 
 group :development do
@@ -47,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Custom gems
 gem 'material_design_icons'
+gem 'friendly_id'
