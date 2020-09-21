@@ -42,11 +42,18 @@ table thead {
 
 table th,
 table td {
-  padding: 4px
+  padding: 4px;
+  height: 40px;
 }
 
 table td.actions {
   text-align: right;
+}
+
+table td.actions a {
+  margin: 0;
+  padding: 8px;
+  background-color: #ccc;
 }
 
 .pagination {

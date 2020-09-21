@@ -39,6 +39,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'simplecov'
+  gem "factory_bot_rails"
 end
 
 group :development do

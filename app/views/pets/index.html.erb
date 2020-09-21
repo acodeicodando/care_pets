@@ -1,21 +1,23 @@
-<h3>Listing of Pets, or you can <%= link_to 'Add a Pet', new_pet_path %></h3>
+<h3>Listing of Pets, or you can
+  <%= link_to 'Add a Pet', new_pet_path %>
+</h3>
 
 <div class="filters">
-Filter by
-<%= form_for :filter, method: :get do |f| %>
-  <fieldset>
-    <%= f.text_field :name, placeholder: 'Name of pet' %>
-  </fieldset>
-  <fieldset>
-    <%= f.date_select :date_of_birth, start_year: 1980, end_year: Date.today.year, prompt: true %>
-  </fieldset>
-  <fieldset>
-    <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
-  </fieldset>
-  <fieldset>
-    <%= f.submit 'Filter', name: nil, value: 'Filter' %>
-  </fieldset>
-<% end %>
+  Filter by
+  <%= form_for :filter, method: :get do |f| %>
+    <fieldset>
+      <%= f.text_field :name, placeholder: 'Name of pet' %>
+    </fieldset>
+    <fieldset>
+      <%= f.date_select :date_of_birth, start_year: 1980, end_year: Date.today.year, prompt: true %>
+    </fieldset>
+    <fieldset>
+      <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
+    </fieldset>
+    <fieldset>
+      <%= f.submit 'Filter', name: nil, value: 'Filter' %>
+    </fieldset>
+    <% end %>
 </div>
 
 
@@ -30,15 +32,23 @@ Filter by
   </thead>
   <tbody>
     <% @pets.each do |pet| %>
-    <tr>
-      <td><%=pet.name%></td>
-      <td><%=pet.date_of_birth%></td>
-      <td><%=pet.pet_type.titleize%></td>
-      <td class="actions">
-        <%=link_to "Update: #{pet.name}", edit_pet_path(pet) %>
-        or <%=link_to 'Show details', pet_path(pet) %></td>
-    </tr>
-    <% end %>
+      <tr>
+        <td>
+          <%=pet.name%>
+        </td>
+        <td>
+          <%=pet.date_of_birth%>
+        </td>
+        <td>
+          <%=pet.pet_type.titleize%>
+        </td>
+        <td class="actions">
+          <%=link_to "Update: #{pet.name}", edit_pet_path(pet) %>
+          <%=link_to "Adopt me", edit_pet_path(pet, anchor: 'pet_adoption') if pet.pet_adoption.nil? %>
+          <%=link_to 'Details', pet_path(pet) %>
+        </td>
+      </tr>
+      <% end %>
   </tbody>
 </table>
 

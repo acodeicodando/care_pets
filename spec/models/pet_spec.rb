@@ -14,7 +14,7 @@ RSpec.describe Pet, type: :model do
       end
     end
     
-    context "should have invalid pet" do
+    context "Should have invalid pet" do
       before do
         subject.valid?
       end

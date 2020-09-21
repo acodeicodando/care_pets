@@ -57,9 +57,13 @@ class PetsController < ApplicationController
 
     def set_pet
       @pet = Pet.friendly.find(params[:id])
+      @pet.build_pet_adoption if @pet.pet_adoption.nil?
     end
 
     def pet_params
-      params.require(:pet).permit(:name, :date_of_birth, :pet_type)
+      params.require(:pet).permit(
+        :name, :date_of_birth, :pet_type,
+        pet_adoption_attributes: [:id, :adopted_by, :adopted_at]
+      )
     end
 end

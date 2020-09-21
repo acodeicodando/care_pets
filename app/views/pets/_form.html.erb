@@ -1,11 +1,13 @@
 <%= form_for @pet do |f| %>
   <% unless @pet.errors.empty? %>
-    <div class='form-errors' >
+    <div class='form-errors'>
       <h2>Errors in this Pet</h2>
       <ul>
         <% @pet.errors.full_messages.each do |message| %>
-          <li><%= message %> </li>
-        <% end %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
       </ul>
     </div>
   <% end %>
@@ -13,11 +15,28 @@
     <%= f.text_field :name, placeholder: 'Name of pet' %>
   </fieldset>
   <fieldset>
+    <%= f.label :date_of_birth %><br />
     <%= f.date_select :date_of_birth, start_year: 1980, end_year: Date.today.year %>
   </fieldset>
   <fieldset>
-    <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
+    <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, include_blank: 'Type of Pet') %>
   </fieldset>
+  <% unless @pet.new_record? %>
+    <div id="pet-adoption-form">
+      <h3>Pet Adoption information</h3>
+      
+      <%= f.fields_for :pet_adoption do |form_pet_adoption| %>
+        <fieldset>
+          <%=form_pet_adoption.text_field :adopted_by, placeholder: 'Adopted by' %>
+        </fieldset>
+        <fieldset>
+          <%= form_pet_adoption.label :adopted_at %><br />
+          <%= form_pet_adoption.date_select :adopted_at, start_year: 1980, end_year: Date.today.year %>
+        </fieldset>
+      <% end %>
+      
+    </div>
+  <% end %>
   <fieldset>
     <%= f.submit 'Save', name: nil, value: 'Save' %>
   </fieldset>

@@ -1,4 +1,7 @@
 class Pet < ApplicationRecord
+  has_one :pet_adoption
+  accepts_nested_attributes_for :pet_adoption
+
   extend FriendlyId
   friendly_id :name, use: :slugged
   

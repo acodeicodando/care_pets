@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_175127) do
+ActiveRecord::Schema.define(version: 2020_09_21_215955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_09_21_175127) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "pet_adoptions", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.string "adopted_by"
+    t.date "adopted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pet_id"], name: "index_pet_adoptions_on_pet_id"
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "name"
     t.date "date_of_birth"
@@ -35,4 +44,5 @@ ActiveRecord::Schema.define(version: 2020_09_21_175127) do
     t.string "slug"
   end
 
+  add_foreign_key "pet_adoptions", "pets"
 end
