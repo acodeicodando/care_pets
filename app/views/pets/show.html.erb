@@ -1,1 +1,27 @@
-<h3>Details of a Pet, or you can come back to <%=link_to 'List of Pets', root_path %></h3>
+<h3>Details of a Pet -
+  <%=@pet.name %>, or you can come back to
+    <%=link_to 'List of Pets', root_path %>
+</h3>
+
+<table id="pet-info">
+  <tbody>
+    <tr>
+      <td class="label">Name (click to update)</td>
+      <td>
+        <%=link_to @pet.name, edit_pet_path(@pet) %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Date of birth</td>
+      <td>
+        <%=@pet.date_of_birth %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Type</td>
+      <td>
+        <%=@pet.pet_type.titleize %>
+      </td>
+    </tr>
+  </tbody>
+</table>
