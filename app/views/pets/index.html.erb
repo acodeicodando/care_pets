@@ -2,18 +2,18 @@
 
 <div class="filters">
 Filter by
-<%= form_for :filter do |f| %>
+<%= form_for :filter, method: :get do |f| %>
   <fieldset>
     <%= f.text_field :name, placeholder: 'Name of pet' %>
   </fieldset>
   <fieldset>
-    <%= f.date_select :date_of_birth, start_year: 1980 %>
+    <%= f.date_select :date_of_birth, start_year: 1980, end_year: Date.today.year, prompt: true %>
   </fieldset>
   <fieldset>
     <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
   </fieldset>
   <fieldset>
-    <%= f.submit 'Filter' %>
+    <%= f.submit 'Filter', name: nil, value: 'Filter' %>
   </fieldset>
 <% end %>
 </div>
@@ -23,7 +23,7 @@ Filter by
   <thead>
     <tr>
       <th>Name</th>
-      <th>Date of Birthday</th>
+      <th>Date of Birth</th>
       <th>Type (dog, cat...)</th>
     </tr>
   </thead>
@@ -32,7 +32,7 @@ Filter by
     <tr>
       <td><%=pet.name%></td>
       <td><%=pet.date_of_birth%></td>
-      <td><%=pet.pet_type%></td>
+      <td><%=pet.pet_type.titleize%></td>
     </tr>
     <% end %>
   </tbody>
