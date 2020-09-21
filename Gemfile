@@ -39,7 +39,6 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'simplecov'
-  gem 'faker'
 end
 
 group :development do
@@ -57,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Custom gems
 gem 'material_design_icons'
 gem 'friendly_id'
+gem 'faker'
