@@ -25,7 +25,7 @@ RSpec.describe Pet, type: :model do
       it { expect(subject.errors[:name]).not_to be_empty }
       it { expect(subject.errors[:date_of_birth]).not_to be_empty }
       it { expect(subject.errors[:date_of_birth].count).to eql(2) }
-      it { expect(subject.errors[:pet_type]).not_to be_empty }
+      it { expect(subject.errors[:pet_type]).to be_empty }
     end
   end
   
