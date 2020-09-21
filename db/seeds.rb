@@ -1,3 +1,4 @@
+require 'faker'
 40.times do
   Pet.create(
     name: Faker::Name.first_name,
