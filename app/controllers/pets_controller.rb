@@ -1,6 +1,9 @@
 class PetsController < ApplicationController
+  before_action :set_new_pet, only: [:new, :create]
+  before_action :set_pet, only: [:show, :edit, :update]
+
   def index
-    @pets = Pet.paginate(page: params[:page], per_page: 10).order(:name)
+    @pets = Pet.paginate(page: params[:page], per_page: 10).order('LOWER(name)')
     unless params[:filter].blank?
       filters = params[:filter]
 
@@ -20,4 +23,32 @@ class PetsController < ApplicationController
       @pets = @pets.where(pet_type: filters[:pet_type]) unless filters[:pet_type].blank?
     end
   end
+
+  def new
+  end
+
+  def create
+    @pet.attributes = pet_params
+    if @pet.save
+      redirect_to pet_path(@pet)
+    else
+      render :new
+    end
+  end
+
+  def show
+  end
+
+  protected
+    def set_new_pet
+      @pet = Pet.new
+    end
+
+    def set_pet
+      @pet = Pet.friendly.find(params[:id])
+    end
+
+    def pet_params
+      params.require(:pet).permit(:name, :date_of_birth, :pet_type)
+    end
 end

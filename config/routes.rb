@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'pets#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :pets, only: [:index, :new, :create, :edit, :update, :show]
 end

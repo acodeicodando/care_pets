@@ -1,0 +1,24 @@
+<%= form_for @pet do |f| %>
+  <% unless @pet.errors.empty? %>
+    <div class='form-errors' >
+      <h2>Errors in this Pet</h2>
+      <ul>
+        <% @pet.errors.full_messages.each do |message| %>
+          <li><%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <%= f.text_field :name, placeholder: 'Name of pet' %>
+  </fieldset>
+  <fieldset>
+    <%= f.date_select :date_of_birth, start_year: 1980, end_year: Date.today.year %>
+  </fieldset>
+  <fieldset>
+    <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit 'Save', name: nil, value: 'Save' %>
+  </fieldset>
+<% end %>
