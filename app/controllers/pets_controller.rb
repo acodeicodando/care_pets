@@ -36,6 +36,17 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @pet.update_attributes(pet_params)
+      redirect_to pet_path(@pet)
+    else
+      render :edit
+    end
+  end
+
   def show
   end
 

@@ -25,6 +25,7 @@ Filter by
       <th>Name</th>
       <th>Date of Birth</th>
       <th>Type (dog, cat...)</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,9 @@ Filter by
       <td><%=pet.name%></td>
       <td><%=pet.date_of_birth%></td>
       <td><%=pet.pet_type.titleize%></td>
+      <td class="actions">
+        <%=link_to "Update: #{pet.name}", edit_pet_path(pet) %>
+        or <%=link_to 'Show details', pet_path(pet) %></td>
     </tr>
     <% end %>
   </tbody>

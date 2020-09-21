@@ -40,6 +40,11 @@ table th, table td{
   padding: 4px
 }
 
+table td.actions {
+  text-align: right;
+
+}
+
 .pagination{
   text-align: center
 }
