@@ -10,7 +10,17 @@ class Pet < ApplicationRecord
   validates :name, :date_of_birth, :pet_type, presence: true
   validate :valid_birthday?
 
+  after_update :fix_pet_detail
+
+
+
   private
+
+  def fix_pet_detail
+    if self.pet_adoption.adopted_by.blank?
+       self.pet_adoption.destroy
+    end
+  end
 
   def valid_birthday?
     if !date_of_birth.is_a?(Date)
