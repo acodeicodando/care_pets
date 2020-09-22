@@ -21,6 +21,7 @@ class PetsController < ApplicationController
       @pets = @pets.where("name ilike ?", "%#{filters[:name]}%") unless filters[:name].blank?
       @pets = @pets.where(date_of_birth: date_of_birth) unless date_of_birth.nil?
       @pets = @pets.where(pet_type: filters[:pet_type]) unless filters[:pet_type].blank?
+      @pets = @pets.joins(:pet_adoption) if filters[:is_adopted].to_i == 1
     end
   end
 

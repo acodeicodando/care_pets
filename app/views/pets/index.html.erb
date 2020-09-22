@@ -15,6 +15,11 @@
       <%= f.select(:pet_type, Pet.pet_types.keys.map {|pet_type| [pet_type.titleize,pet_type]}, prompt: 'Type of Pet') %>
     </fieldset>
     <fieldset>
+      <%= f.label :is_adopted, "Is Adopted?" %>
+      <br />
+      <%= f.check_box(:is_adopted) %>
+    </fieldset>
+    <fieldset>
       <%= f.submit 'Filter', name: nil, value: 'Filter' %>
     </fieldset>
     <% end %>
@@ -27,7 +32,7 @@
       <th>Name</th>
       <th>Date of Birth</th>
       <th>Type (dog, cat...)</th>
-      <th>Adopted?</th>
+      <th>Is Adopted?</th>
       <th>Actions</th>
     </tr>
   </thead>

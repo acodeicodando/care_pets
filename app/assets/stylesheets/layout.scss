@@ -72,3 +72,7 @@ form fieldset * {
   padding: 4px;
   width: 200px;
 }
+
+form fieldset input[type=checkbox] {
+  width: 20px;
+}
