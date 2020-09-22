@@ -27,6 +27,7 @@
       <th>Name</th>
       <th>Date of Birth</th>
       <th>Type (dog, cat...)</th>
+      <th>Adopted?</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -42,9 +43,12 @@
         <td>
           <%=pet.pet_type.titleize%>
         </td>
+        <td>
+          <%=pet.pet_adoption.nil? ? 'No' : 'Yes'%>
+        </td>
         <td class="actions">
           <%=link_to "Update: #{pet.name}", edit_pet_path(pet) %>
-          <%=link_to "Adopt me", edit_pet_path(pet, anchor: 'pet_adoption') if pet.pet_adoption.nil? %>
+          <%=link_to "Adopt me", edit_pet_path(pet, anchor: 'pet_adoption') %>
           <%=link_to 'Details', pet_path(pet) %>
         </td>
       </tr>
