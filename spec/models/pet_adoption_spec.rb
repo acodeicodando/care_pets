@@ -14,20 +14,6 @@ RSpec.describe PetAdoption, type: :model do
         expect(subject).to be_valid
       end
     end
-    
-    context "Should have invalid Adoption" do
-      before do
-        subject.valid?
-      end
-
-      it "Invalid Adoption" do
-        expect(subject).to be_invalid
-      end
-      it { expect(subject.errors[:adopted_at]).not_to be_empty }
-      it { expect(subject.errors[:adopted_at]).not_to be_empty }
-      it { expect(subject.errors[:adopted_at].count).to eql(2) }
-      it { expect(subject.errors[:pet]).not_to be_empty }
-    end
   end
   
 end

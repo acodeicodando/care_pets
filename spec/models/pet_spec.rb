@@ -28,5 +28,17 @@ RSpec.describe Pet, type: :model do
       it { expect(subject.errors[:pet_type]).to be_empty }
     end
   end
+
+  describe "Case of Pet Adoption" do
+    context "remove pet apdoption when adoted by is empty" do
+      before do
+        pet_adoption = create(:pet_adoption, adopted_by: "")
+        subject = pet_adoption.pet
+        subject.save
+      end
+      it { expect(subject.pet_adoption).to  be_nil} 
+    end
+  end
+  
   
 end
