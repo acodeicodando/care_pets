@@ -40,10 +40,12 @@ table thead {
   background-color: #ccc;
 }
 
-table th,
-table td {
-  padding: 4px;
-  height: 40px;
+table {
+  th,
+  td {
+    padding: 4px;
+    height: 40px;
+  }
 }
 
 table td.actions {

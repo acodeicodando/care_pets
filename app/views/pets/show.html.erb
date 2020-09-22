@@ -23,5 +23,22 @@
         <%=@pet.pet_type.titleize %>
       </td>
     </tr>
+    <% unless @pet.pet_adoption.new_record? %>
+    <tr>
+      <td class="label" colspan="2"><strong>Pet Adoption information</strong></td>
+    </tr>
+    <tr>
+      <td class="label">Adopted by</td>
+      <td>
+        <%=@pet.pet_adoption.adopted_by %>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Adopted at</td>
+      <td>
+        <%=@pet.pet_adoption.adopted_at %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
 </table>

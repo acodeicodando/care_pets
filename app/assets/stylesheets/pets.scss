@@ -15,8 +15,11 @@ table#pet-info td.label {
   background: #ccc;
 }
 
-table#pet-info td a {
-  margin: 0px;
+table#pet-info {
+  a,
+  strong {
+    margin: 0px;
+  }
 }
 
 #pet-adoption-form {
